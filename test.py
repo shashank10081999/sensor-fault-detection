@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from gettext import install
 from sensor.constants.training_pipeline import SCHEMA_FILE_PATH
 from sensor.utils.main_utils import read_yaml_file,write_yaml_file
+from sensor.ml.model.estimator import TargetValueMapping
 
 
 @dataclass
@@ -21,4 +22,7 @@ please check the above function for more understand
 
 
 schema_config = read_yaml_file(SCHEMA_FILE_PATH)
-print(schema_config["columns"])
+print(len(schema_config["columns"]))
+
+
+print(TargetValueMapping().reverse_mapping())
