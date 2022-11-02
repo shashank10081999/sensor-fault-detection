@@ -3,6 +3,7 @@ from sensor.constants.training_pipeline import SCHEMA_FILE_PATH
 from sensor.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact
 from sensor.entity.config_entity import DataValidationConfig
 from sensor.utils.main_utils import read_yaml_file,write_yaml_file
+from sensor.logger import logging
 from scipy.stats import ks_2samp
 import pandas as pd
 import numpy as np
@@ -33,6 +34,9 @@ class DataValidation():
     def validate_number_of_columns(self,dataframe:pd.DataFrame)->bool:
         try:
             number_of_columns = len(self.schema_config["columns"])
+
+            logging.info(f"Required number of columns: {number_of_columns}")
+            logging.info(f"Data frame has columns: {len(dataframe.columns)}")
 
             if len(dataframe.columns) == number_of_columns:
                 return True
@@ -135,6 +139,8 @@ class DataValidation():
                 invalid_test_file_path=None,
                 drift_report_file_path=self.data_validation_config.drift_report_file_path,
             )
+
+            logging.info(f"Data validation artifact: {data_validation_artifact}")
 
             return data_validation_artifact
 

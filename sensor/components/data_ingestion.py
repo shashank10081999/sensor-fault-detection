@@ -7,6 +7,7 @@ from pandas import DataFrame
 from sensor.data_access.sensor_data import SensorData
 from sensor.utils.main_utils import read_yaml_file,write_yaml_file
 from sensor.constants.training_pipeline import SCHEMA_FILE_PATH
+from sensor.logger import logging
 
 class DataIngestion():
 
@@ -22,6 +23,8 @@ class DataIngestion():
     def export_data_into_feature_store(self):
 
         try:
+
+            logging.info("Exporting data from mongodb to feature store")
 
             sensor_data = SensorData()
             dataframe = sensor_data.export_collection_as_dataframe(collection_name=self.data_ingestion_config.collection_name)
@@ -42,19 +45,28 @@ class DataIngestion():
 
             train_data , test_data = train_test_split(dataframe , test_size = self.data_ingestion_config.train_test_split_ration)
 
+            logging.info("Performed train test split on the dataframe")
+
+            logging.info("Exited split_data_as_train_test method of Data_Ingestion class")
+
             dir_path = os.path.dirname(self.data_ingestion_config.training_file_path)
 
             os.makedirs(dir_path , exist_ok= True)
 
+            logging.info(f"Exporting train and test file path.")
+
             train_data.to_csv(self.data_ingestion_config.training_file_path , index = False , header = True)
 
             test_data.to_csv(self.data_ingestion_config.testing_file_path , index = False , header = True)
+
+            logging.info(f"Exported train and test file path.")
 
         except Exception as e:
             raise e 
 
     def initiate_data_ingestion(self) -> DataIngestionArtifact:
         try:
+            logging.info("Data ingestion initiated")
             dataframe = self.export_data_into_feature_store()
             dataframe = dataframe.drop(self.schema_config["drop_columns"],axis=1)
             self.split_data_as_train_test(dataframe=dataframe)

@@ -4,8 +4,9 @@ from gettext import install
 from sensor.constants.training_pipeline import SCHEMA_FILE_PATH
 from sensor.utils.main_utils import read_yaml_file,write_yaml_file
 from sensor.ml.model.estimator import TargetValueMapping
-
-
+import os
+from from_root import from_root
+from datetime import datetime
 @dataclass
 class test_cclass():
     dummy_a:int
@@ -26,3 +27,9 @@ print(len(schema_config["columns"]))
 
 
 print(TargetValueMapping().reverse_mapping())
+
+LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
+
+logs_path = os.path.join(from_root() , "logs" , LOG_FILE)
+print(logs_path)
+print(os.path.join(logs_path, LOG_FILE))

@@ -16,6 +16,7 @@ from sensor.entity.artifact_entity import (
 from sensor.entity.config_entity import DataTransformationConfig
 from sensor.ml.model.estimator import TargetValueMapping
 from sensor.utils.main_utils import save_numpy_array_data, save_object
+from sensor.logger import logging
 
 class DataTransformation():
     
@@ -98,6 +99,7 @@ class DataTransformation():
                 transformed_train_file_path = self.data_transformation_config.transformed_train_file_path , 
                 transformed_test_file_path = self.data_transformation_config.transformed_test_file_path)
 
+            logging.info(f"Data transformation artifact: {data_transformation_artifact}")
             return data_transformation_artifact
 
         except Exception as e:
