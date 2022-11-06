@@ -2,7 +2,6 @@ import os,sys
 from sensor.pipeline import training_pipeline
 from sensor.pipeline.training_pipeline import TrainPipeline
 import os
-from sensor.utils.main_utils import read_yaml_file
 from sensor.constants.training_pipeline import SAVED_MODEL_DIR
 from fastapi import FastAPI
 from sensor.constants.application import APP_HOST, APP_PORT
