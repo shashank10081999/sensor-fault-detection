@@ -54,4 +54,13 @@ def save_object(file_path : str, object) -> None:
         with open(file_path , "wb") as file_object:
             dill.dump(object , file_object)
     except Exception as e:
-        raise e 
+        raise e
+
+def load_object(file_path:str):
+    try:
+        if not os.path.exists(file_path):
+            raise Exception(f"The give file path {file_path} does not exist")
+        with open(file_path, "rb") as file_object:
+            return dill.load(file_object)
+    except Exception as e: 
+        raise e

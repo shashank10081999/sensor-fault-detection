@@ -15,4 +15,6 @@ dnspython
 pyyaml
 from_root
 dill
+fastapi
+uvicorn
 -e .
