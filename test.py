@@ -1,5 +1,4 @@
 # This is script to test some commands and  functions
-from dataclasses import dataclass
 from gettext import install
 from sensor.constants.training_pipeline import SCHEMA_FILE_PATH
 from sensor.utils.main_utils import read_yaml_file,write_yaml_file
