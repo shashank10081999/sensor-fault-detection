@@ -4,7 +4,6 @@ from gettext import install
 from sensor.constants.training_pipeline import SCHEMA_FILE_PATH
 from sensor.utils.main_utils import read_yaml_file,write_yaml_file
 from sensor.ml.model.estimator import TargetValueMapping
-import os
 from from_root import from_root
 from datetime import datetime
 from sensor.pipeline import training_pipeline
