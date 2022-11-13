@@ -7,6 +7,22 @@ from sensor.ml.model.estimator import TargetValueMapping
 import os
 from from_root import from_root
 from datetime import datetime
+import os,sys
+from sensor.pipeline import training_pipeline
+from sensor.pipeline.training_pipeline import TrainPipeline
+import os
+from sensor.constants.training_pipeline import SAVED_MODEL_DIR
+from fastapi import FastAPI
+from sensor.constants.application import APP_HOST, APP_PORT
+from starlette.responses import RedirectResponse
+from uvicorn import run as app_run
+from fastapi.responses import Response
+from sensor.ml.model.estimator import ModelResolver,TargetValueMapping
+from sensor.utils.main_utils import load_object
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi import File , UploadFile
+import pandas as pd
+import os
 @dataclass
 class test_cclass():
     dummy_a:int
@@ -33,3 +49,7 @@ LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
 logs_path = os.path.join(from_root() , "logs" , LOG_FILE)
 print(logs_path)
 print(os.path.join(logs_path, LOG_FILE))
+
+
+training_pipeline = TrainPipeline()
+training_pipeline.run_pipeline()
