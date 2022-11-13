@@ -9,7 +9,6 @@ from from_root import from_root
 from datetime import datetime
 from sensor.pipeline import training_pipeline
 from sensor.pipeline.training_pipeline import TrainPipeline
-import os
 from sensor.constants.training_pipeline import SAVED_MODEL_DIR
 from fastapi import FastAPI
 from sensor.constants.application import APP_HOST, APP_PORT
