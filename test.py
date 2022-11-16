@@ -46,6 +46,3 @@ logs_path = os.path.join(from_root() , "logs" , LOG_FILE)
 print(logs_path)
 print(os.path.join(logs_path, LOG_FILE))
 
-
-training_pipeline = TrainPipeline()
-training_pipeline.run_pipeline()
