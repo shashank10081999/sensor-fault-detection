@@ -16,5 +16,6 @@ pyyaml
 from_root
 dill
 fastapi
+python-multipart
 uvicorn
 -e .
