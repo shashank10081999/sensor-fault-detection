@@ -19,6 +19,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi import File , UploadFile
 import pandas as pd
 import os
+'''
 @dataclass
 class test_cclass():
     dummy_a:int
@@ -46,6 +47,6 @@ logs_path = os.path.join(from_root() , "logs" , LOG_FILE)
 print(logs_path)
 print(os.path.join(logs_path, LOG_FILE))
 
+'''
 training_pipeline = TrainPipeline()
-
 training_pipeline.run_pipeline()
