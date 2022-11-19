@@ -18,7 +18,7 @@ from sensor.utils.main_utils import load_object
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import File , UploadFile
 import pandas as pd
-import os, sys
+import os
 @dataclass
 class test_cclass():
     dummy_a:int
